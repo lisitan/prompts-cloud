@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 平滑的颜色过渡 */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 选中色：随主题变化 */
+::selection {
+  background: #e4e4e7;
+  color: black;
+}
+
+.dark ::selection {
+  background: #3f3f46;
+  color: white;
+}
+
+/* 液体感交互 */
+.liquid-card {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.2s ease, background-color 0.3s;
+}
+
+.liquid-card:active {
+  transform: scale(0.96);
+}
+
+/* 按钮触摸反馈 */
+.btn-press:active {
+  transform: scale(0.92);
+}
+
+/* 隐藏滚动条 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 行截断 */
+.line-clamp-15 {
+  display: -webkit-box;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 瀑布流布局 */
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1280px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1800px) {
+  .masonry-grid {
+    column-count: 4;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}

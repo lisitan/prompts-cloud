@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: 单文件提示词助手\n\n- Vue 3 + Tailwind CSS 实现\n- Liquid Air 设计语言\n- localStorage 数据持久化\n- Excel/JSON 导入导出功能\n- 标签系统与瀑布流布局\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh repo create:*)",
+      "Bash(git --version:*)",
+      "Bash(git config:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(npm install)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: 添加完整的实施方案文档\n\n- 创建 IMPLEMENTATION_PLAN.md 详细实施方案\n- 包含11个阶段的完整路线图\n- 详细的任务清单和验收标准\n- 技术架构设计和数据库模型\n- 风险分析和应对措施\n- 环境变量配置清单\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
