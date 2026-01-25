@@ -18,7 +18,9 @@ export function usePrompts() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['prompts'],
     queryFn: async () => {
-      const res = await fetch('/api/prompts');
+      const res = await fetch('/api/prompts', {
+        credentials: 'include',
+      });
       if (!res.ok) throw new Error('获取提示词失败');
       const json = await res.json();
       return json.prompts as Prompt[];
@@ -30,6 +32,7 @@ export function usePrompts() {
     mutationFn: async (data: { title: string; content: string; tags: string[] }) => {
       const res = await fetch('/api/prompts', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
@@ -47,6 +50,7 @@ export function usePrompts() {
     mutationFn: async ({ id, data }: { id: string; data: Partial<Prompt> }) => {
       const res = await fetch(`/api/prompts/${id}`, {
         method: 'PUT',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
@@ -64,6 +68,7 @@ export function usePrompts() {
     mutationFn: async (id: string) => {
       const res = await fetch(`/api/prompts/${id}`, {
         method: 'DELETE',
+        credentials: 'include',
       });
       if (!res.ok) throw new Error('删除失败');
       return res.json();

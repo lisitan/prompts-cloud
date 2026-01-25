@@ -15,7 +15,9 @@ export function useTags() {
   const { data, isLoading } = useQuery({
     queryKey: ['tags'],
     queryFn: async () => {
-      const res = await fetch('/api/tags');
+      const res = await fetch('/api/tags', {
+        credentials: 'include',
+      });
       if (!res.ok) throw new Error('获取标签失败');
       const json = await res.json();
       return json.tags as Tag[];
@@ -27,6 +29,7 @@ export function useTags() {
     mutationFn: async (tagName: string) => {
       const res = await fetch('/api/tags/pin', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tagName }),
       });
