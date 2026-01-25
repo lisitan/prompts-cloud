@@ -72,7 +72,7 @@ export default function LoginPage() {
         <div className="bg-white dark:bg-neutral-900 rounded-[2rem] shadow-xl p-8 border border-neutral-200 dark:border-neutral-800">
           {/* Logo */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-primary-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
               Liquid Air
             </h1>
           </div>
