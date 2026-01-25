@@ -23,14 +23,13 @@ export function Header({ userEmail, onNewPrompt, onImport, onExport }: HeaderPro
   };
 
   return (
-    <header className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 sticky top-0 z-50">
+    <header className="border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo - 极简设计 */}
         <div>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
-            思潭的提示词集
+            Liquid Air
           </h1>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">Liquid Air</p>
         </div>
 
         {/* 操作按钮 */}

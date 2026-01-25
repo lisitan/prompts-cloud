@@ -121,7 +121,7 @@ export default function AppPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col">
       {/* 头部 */}
       <Header
         userEmail="用户"
@@ -131,17 +131,35 @@ export default function AppPage() {
       />
 
       {/* 主内容 */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+        {/* 使用引导 */}
+        {prompts.length === 0 && !isLoading && (
+          <div className="mb-8 p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-200 dark:border-zinc-800">
+            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+              💡 快速开始
+            </h2>
+            <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <li>• 点击右上角 <strong>新建</strong> 按钮创建提示词</li>
+              <li>• 点击卡片的 <strong>标题或内容</strong> 即可快速复制</li>
+              <li>• 悬停卡片可显示 <strong>编辑/删除</strong> 按钮</li>
+              <li>• 右键点击标签可 <strong>置顶</strong> 常用标签</li>
+              <li>• 使用顶部菜单可 <strong>导入/导出</strong> 数据</li>
+            </ul>
+          </div>
+        )}
+
         {/* 搜索和标签 */}
-        <div className="mb-8 space-y-4">
-          <SearchBar value={searchQuery} onChange={setSearchQuery} />
-          <TagFilter
-            tags={tags}
-            selectedTag={selectedTag}
-            onSelectTag={setSelectedTag}
-            onTogglePin={togglePin}
-          />
-        </div>
+        {prompts.length > 0 && (
+          <div className="mb-8 space-y-4">
+            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+            <TagFilter
+              tags={tags}
+              selectedTag={selectedTag}
+              onSelectTag={setSelectedTag}
+              onTogglePin={togglePin}
+            />
+          </div>
+        )}
 
         {/* 提示词列表 */}
         {isLoading ? (
@@ -187,6 +205,15 @@ export default function AppPage() {
           </div>
         )}
       </main>
+
+      {/* 底部作者信息 - 固定在页面底部 */}
+      <footer className="border-t border-zinc-200 dark:border-zinc-800 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <p className="text-xs text-center text-zinc-400 dark:text-zinc-600">
+            Copyright © 2025-2026 思潭有话说. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
 
       {/* 模态框 */}
       <PromptModal
