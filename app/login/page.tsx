@@ -67,26 +67,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 p-4">
       <div className="max-w-md w-full">
-        <div className="bg-white dark:bg-zinc-900 rounded-[2rem] shadow-xl p-8 border border-zinc-200 dark:border-zinc-800">
+        <div className="bg-white dark:bg-neutral-900 rounded-[2rem] shadow-xl p-8 border border-neutral-200 dark:border-neutral-800">
           {/* Logo */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
-              思潭的提示词集
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-primary-600 bg-clip-text text-transparent">
+              Liquid Air
             </h1>
-            <p className="text-zinc-500 dark:text-zinc-400 mt-2">Liquid Air</p>
           </div>
 
           {/* 切换登录/注册 */}
-          <div className="flex gap-2 mb-6 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-[1rem]">
+          <div className="flex gap-2 mb-6 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-[1rem]">
             <button
               type="button"
               onClick={() => setIsLogin(true)}
               className={`flex-1 py-2 px-4 rounded-[0.75rem] font-medium transition-all duration-200 ${
                 isLogin
-                  ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
+                  ? 'bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 shadow-sm'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200'
               }`}
             >
               登录
@@ -96,8 +95,8 @@ export default function LoginPage() {
               onClick={() => setIsLogin(false)}
               className={`flex-1 py-2 px-4 rounded-[0.75rem] font-medium transition-all duration-200 ${
                 !isLogin
-                  ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 shadow-sm'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
+                  ? 'bg-white dark:bg-neutral-700 text-neutral-900 dark:text-neutral-100 shadow-sm'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200'
               }`}
             >
               注册
@@ -124,7 +123,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2"
+                className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
               >
                 邮箱地址
               </label>
@@ -135,7 +134,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 rounded-[1rem] border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 transition-shadow"
+                className="w-full px-4 py-3 rounded-[1rem] border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-600 transition-shadow"
               />
             </div>
 
@@ -143,7 +142,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2"
+                className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
               >
                 密码
               </label>
@@ -155,7 +154,7 @@ export default function LoginPage() {
                 required
                 minLength={6}
                 placeholder={isLogin ? '请输入密码' : '至少 6 位字符'}
-                className="w-full px-4 py-3 rounded-[1rem] border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600 transition-shadow"
+                className="w-full px-4 py-3 rounded-[1rem] border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-600 transition-shadow"
               />
             </div>
 
@@ -163,7 +162,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-[1rem] py-3 px-6 font-medium hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 rounded-[1rem] py-3 px-6 font-medium hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -194,7 +193,7 @@ export default function LoginPage() {
           </form>
 
           {/* 底部提示 */}
-          <p className="text-center text-sm text-zinc-500 dark:text-zinc-500 mt-6">
+          <p className="text-center text-sm text-neutral-500 dark:text-neutral-400 mt-6">
             {isLogin ? '还没有账户？' : '已有账户？'}
             <button
               type="button"
@@ -203,16 +202,16 @@ export default function LoginPage() {
                 setError('');
                 setMessage('');
               }}
-              className="ml-1 text-zinc-900 dark:text-zinc-100 font-medium hover:underline"
+              className="ml-1 text-neutral-900 dark:text-neutral-100 font-medium hover:underline"
             >
               {isLogin ? '立即注册' : '去登录'}
             </button>
           </p>
         </div>
 
-        {/* 版本信息 */}
-        <p className="text-center text-xs text-zinc-400 dark:text-zinc-600 mt-4">
-          Powered by Vercel & Supabase
+        {/* 版权信息 */}
+        <p className="text-center text-xs text-neutral-500 dark:text-neutral-400 mt-4">
+          Copyright © 2025-2026 思潭有话说. All Rights Reserved.
         </p>
       </div>
     </div>
