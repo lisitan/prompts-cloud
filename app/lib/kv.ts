@@ -12,6 +12,11 @@ export interface Prompt {
   deletedAt: number | null;
 }
 
+// 获取单个提示词
+export async function getPrompt(promptId: string): Promise<Prompt | null> {
+  return await kv.get<Prompt>(`prompt:${promptId}`);
+}
+
 // 获取用户所有提示词
 export async function getUserPrompts(userId: string): Promise<Prompt[]> {
   const promptIds = await kv.smembers(`user:${userId}:prompts`);
