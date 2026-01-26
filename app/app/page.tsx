@@ -223,16 +223,7 @@ export default function AppPage() {
       <footer className="border-t border-neutral-200 dark:border-neutral-700 mt-auto">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-6">
           <p className="text-xs text-center text-neutral-600 dark:text-neutral-400">
-            Copyright © 2026{' '}
-            <a
-              href="https://lisitan.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-neutral-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-            >
-              词匣子
-            </a>
-            . All Rights Reserved.
+            Copyright © 2026 思潭有话说. All Rights Reserved.
           </p>
         </div>
       </footer>
