@@ -121,7 +121,7 @@ export default function AppPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-neutral-900 flex flex-col">
       {/* 头部 */}
       <Header
         userEmail="用户"
@@ -132,25 +132,49 @@ export default function AppPage() {
 
       {/* 主内容 */}
       <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+        {/* 页面标题 */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
+            词匣子
+          </h1>
+          <p className="mt-2 text-neutral-600 dark:text-neutral-400 text-sm">收集整理你的AI提示词</p>
+        </div>
+
         {/* 使用引导 */}
         {prompts.length === 0 && !isLoading && (
-          <div className="mb-8 p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-zinc-200 dark:border-zinc-800">
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
-              💡 快速开始
+          <div className="mb-8 p-8 bg-neutral-50 dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700">
+            <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
+              <span className="text-2xl">💡</span>
+              快速开始
             </h2>
-            <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-              <li>• 点击右上角 <strong>新建</strong> 按钮创建提示词</li>
-              <li>• 点击卡片的 <strong>标题或内容</strong> 即可快速复制</li>
-              <li>• 悬停卡片可显示 <strong>编辑/删除</strong> 按钮</li>
-              <li>• 右键点击标签可 <strong>置顶</strong> 常用标签</li>
-              <li>• 使用顶部菜单可 <strong>导入/导出</strong> 数据</li>
+            <ul className="space-y-3 text-sm text-neutral-700 dark:text-neutral-300">
+              <li className="flex items-start gap-2">
+                <span className="text-primary-600 dark:text-primary-400 mt-0.5">•</span>
+                <span>点击右上角 <strong className="text-neutral-900 dark:text-white">新建</strong> 按钮创建提示词</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-600 dark:text-primary-400 mt-0.5">•</span>
+                <span>点击卡片的 <strong className="text-neutral-900 dark:text-white">标题或内容</strong> 即可快速复制</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-600 dark:text-primary-400 mt-0.5">•</span>
+                <span>移动端长按卡片，桌面端悬停卡片可显示 <strong className="text-neutral-900 dark:text-white">编辑/删除</strong> 按钮</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-600 dark:text-primary-400 mt-0.5">•</span>
+                <span>移动端长按标签，桌面端右键点击标签可 <strong className="text-neutral-900 dark:text-white">置顶</strong> 常用标签</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-primary-600 dark:text-primary-400 mt-0.5">•</span>
+                <span>使用顶部菜单可 <strong className="text-neutral-900 dark:text-white">导入/导出</strong> 数据</span>
+              </li>
             </ul>
           </div>
         )}
 
         {/* 搜索和标签 */}
         {prompts.length > 0 && (
-          <div className="mb-8 space-y-4">
+          <div className="mb-8 space-y-6">
             <SearchBar value={searchQuery} onChange={setSearchQuery} />
             <TagFilter
               tags={tags}
@@ -164,33 +188,22 @@ export default function AppPage() {
         {/* 提示词列表 */}
         {isLoading ? (
           <div className="text-center py-20">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-zinc-300 dark:border-zinc-700 border-t-zinc-900 dark:border-t-zinc-100"></div>
-            <p className="mt-4 text-zinc-500 dark:text-zinc-400">加载中...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-neutral-300 dark:border-neutral-700 border-t-primary-600 dark:border-t-primary-500"></div>
+            <p className="mt-4 text-neutral-600 dark:text-neutral-400">加载中...</p>
           </div>
         ) : filteredPrompts.length === 0 ? (
           <div className="text-center py-20">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-zinc-100 dark:bg-zinc-800 mb-6">
-              <svg className="w-10 h-10 text-zinc-400 dark:text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-800 mb-6">
+              <svg className="w-10 h-10 text-neutral-400 dark:text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+            <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
               {searchQuery || selectedTag ? '没有找到匹配的提示词' : '还没有提示词'}
             </h3>
-            <p className="text-zinc-500 dark:text-zinc-400 mb-6">
+            <p className="text-neutral-600 dark:text-neutral-400">
               {searchQuery || selectedTag ? '试试其他搜索条件' : '点击右上角"新建"按钮创建第一个提示词'}
             </p>
-            {!searchQuery && !selectedTag && (
-              <button
-                onClick={handleNew}
-                className="inline-flex items-center gap-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-6 py-3 rounded-[1rem] font-medium hover:scale-[1.02] active:scale-[0.98] transition-transform"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                创建提示词
-              </button>
-            )}
           </div>
         ) : (
           <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
@@ -206,11 +219,20 @@ export default function AppPage() {
         )}
       </main>
 
-      {/* 底部作者信息 - 固定在页面底部 */}
-      <footer className="border-t border-zinc-200 dark:border-zinc-800 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <p className="text-xs text-center text-zinc-400 dark:text-zinc-600">
-            Copyright © 2025-2026 思潭有话说. All Rights Reserved.
+      {/* 底部版权信息 - 固定在页面底部 */}
+      <footer className="border-t border-neutral-200 dark:border-neutral-700 mt-auto">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-6">
+          <p className="text-xs text-center text-neutral-600 dark:text-neutral-400">
+            Copyright © 2026{' '}
+            <a
+              href="https://lisitan.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-neutral-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            >
+              词匣子
+            </a>
+            . All Rights Reserved.
           </p>
         </div>
       </footer>
