@@ -135,7 +135,7 @@ export default function AppPage() {
         {/* 页面标题 */}
         <div className="mb-6">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
-            词匣子
+            汇聚智慧，一触即发
           </h1>
           <p className="mt-2 text-neutral-600 dark:text-neutral-400 text-sm">收集整理你的AI提示词</p>
         </div>

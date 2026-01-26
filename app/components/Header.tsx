@@ -49,7 +49,7 @@ export function Header({ userEmail, onNewPrompt, onImport, onExport }: HeaderPro
         {/* Logo */}
         <div>
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">
-            词匣子
+
           </h1>
         </div>
 
