@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -18,6 +19,13 @@ export default function LoginPage() {
     setLoading(true);
     setMessage('');
     setError('');
+
+    // 注册时验证密码是否一致
+    if (!isLogin && password !== confirmPassword) {
+      setError('两次输入的密码不一致，请重新输入');
+      setLoading(false);
+      return;
+    }
 
     const supabase = createClient();
 
@@ -158,6 +166,28 @@ export default function LoginPage() {
               />
             </div>
 
+            {/* 确认密码输入 - 仅注册时显示 */}
+            {!isLogin && (
+              <div>
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
+                >
+                  确认密码
+                </label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  placeholder="请再次输入密码"
+                  className="w-full px-4 py-3 rounded-[1rem] border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-600 transition-shadow"
+                />
+              </div>
+            )}
+
             {/* 提交按钮 */}
             <button
               type="submit"
@@ -201,6 +231,7 @@ export default function LoginPage() {
                 setIsLogin(!isLogin);
                 setError('');
                 setMessage('');
+                setConfirmPassword(''); // 切换时清空确认密码
               }}
               className="ml-1 text-neutral-900 dark:text-neutral-100 font-medium hover:underline"
             >
@@ -211,7 +242,7 @@ export default function LoginPage() {
 
         {/* 版权信息 */}
         <p className="text-center text-xs text-neutral-500 dark:text-neutral-400 mt-4">
-          Copyright © 2025-2026 思潭有话说. All Rights Reserved.
+          Copyright © 2026 思潭有话说. All Rights Reserved.
         </p>
       </div>
     </div>
