@@ -61,7 +61,7 @@ export function PromptCard({ prompt, onEdit, onDelete }: PromptCardProps) {
 
       {/* 复制成功提示 */}
       {copied && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-2 rounded-lg text-sm font-bold shadow-xl">
           ✓ 已复制
         </div>
       )}
