@@ -77,7 +77,7 @@ export function PromptCard({ prompt, onEdit, onDelete }: PromptCardProps) {
 
       {/* 内容 */}
       <p
-        className="text-neutral-700 dark:text-neutral-300 text-sm leading-relaxed whitespace-pre-wrap line-clamp-[15] mb-4 cursor-pointer"
+        className="text-neutral-900 dark:text-neutral-300 text-sm leading-relaxed whitespace-pre-wrap line-clamp-[15] mb-4 cursor-pointer"
         onClick={handleCopy}
         title="点击复制内容"
       >
@@ -90,7 +90,7 @@ export function PromptCard({ prompt, onEdit, onDelete }: PromptCardProps) {
           {prompt.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800 rounded-lg text-xs font-medium"
+              className="px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-900 dark:text-primary-300 border border-primary-300 dark:border-primary-800 rounded-lg text-xs font-medium"
             >
               {tag}
             </span>

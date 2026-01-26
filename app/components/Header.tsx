@@ -27,7 +27,7 @@ export function Header({ userEmail, onNewPrompt, onImport, onExport }: HeaderPro
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-5 flex justify-between items-center">
         {/* Logo - 清新渐变 */}
         <div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-primary-600 bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
             词匣子
           </h1>
         </div>
