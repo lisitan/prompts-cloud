@@ -76,14 +76,82 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 p-4">
-      <div className="max-w-md w-full">
-        <div className="bg-white dark:bg-neutral-900 rounded-[2rem] shadow-xl p-8 border border-neutral-200 dark:border-neutral-800">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
+      <div className="max-w-6xl w-full flex flex-col lg:flex-row gap-8 items-center">
+        {/* 左侧介绍区域 - 仅桌面端显示 */}
+        <div className="hidden lg:block flex-1 space-y-8">
+          <div>
+            <h1 className="text-5xl font-bold text-neutral-900 dark:text-white mb-4">
               词匣子
             </h1>
+            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
+              收集整理你的 AI 提示词
+            </p>
           </div>
+
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">简单易用</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">一键保存、快速复制，让你的提示词管理井井有条</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">智能标签</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">用标签分类整理，快速找到你需要的提示词</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">云端同步</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">数据安全存储在云端，随时随地访问你的提示词库</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">导入导出</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">支持 JSON 和 Excel 格式，轻松迁移和备份数据</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 右侧登录表单 */}
+        <div className="w-full lg:w-auto lg:min-w-[480px]">
+          {/* 移动端 Logo */}
+          <div className="lg:hidden text-center mb-8">
+            <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2">
+              词匣子
+            </h1>
+            <p className="text-neutral-600 dark:text-neutral-400">
+              收集整理你的 AI 提示词
+            </p>
+          </div>
+
+          <div className="bg-white dark:bg-neutral-900 rounded-[2rem] shadow-xl p-8 border border-neutral-200 dark:border-neutral-800">
 
           {/* 切换登录/注册 */}
           <div className="flex gap-2 mb-6 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-[1rem]">

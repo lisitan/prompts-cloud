@@ -12,7 +12,11 @@
       "Bash(git push:*)",
       "Bash(npx create-next-app:*)",
       "Bash(npm install)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: 添加完整的实施方案文档\n\n- 创建 IMPLEMENTATION_PLAN.md 详细实施方案\n- 包含11个阶段的完整路线图\n- 详细的任务清单和验收标准\n- 技术架构设计和数据库模型\n- 风险分析和应对措施\n- 环境变量配置清单\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\ndocs: 添加完整的实施方案文档\n\n- 创建 IMPLEMENTATION_PLAN.md 详细实施方案\n- 包含11个阶段的完整路线图\n- 详细的任务清单和验收标准\n- 技术架构设计和数据库模型\n- 风险分析和应对措施\n- 环境变量配置清单\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git mv:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\n更新品牌为「词匣子」并优化交互体验\n\n- 项目更名：Liquid Air → 词匣子\n- 更新 slogan：收集整理你的AI提示词\n- 文件重命名：提示词助手.html → prompt-box.html\n- 修复编辑/删除按钮交互问题（添加 pointer-events-none）\n- 新增 README.md 项目说明文档\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(ls:*)"
     ]
   }
 }

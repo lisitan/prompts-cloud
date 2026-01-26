@@ -17,10 +17,10 @@ export function TagFilter({ tags, selectedTag, onSelectTag, onTogglePin }: TagFi
       {/* 全部按钮 */}
       <button
         onClick={() => onSelectTag(null)}
-        className={`px-4 py-2 rounded-[1rem] font-medium transition-all ${
+        className={`px-4 py-2 rounded-xl font-medium transition-all ${
           selectedTag === null
-            ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-sm'
-            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+            ? 'bg-primary-600 dark:bg-primary-500 text-white shadow-sm'
+            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700'
         }`}
       >
         全部 ({tags.reduce((sum, tag) => sum + tag.count, 0)})
@@ -35,10 +35,10 @@ export function TagFilter({ tags, selectedTag, onSelectTag, onTogglePin }: TagFi
             e.preventDefault();
             onTogglePin(tag.name);
           }}
-          className={`group relative px-4 py-2 rounded-[1rem] font-medium transition-all ${
+          className={`group relative px-4 py-2 rounded-xl font-medium transition-all ${
             selectedTag === tag.name
-              ? 'bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-sm'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+              ? 'bg-primary-600 dark:bg-primary-500 text-white shadow-sm'
+              : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700'
           }`}
           title="右键点击可置顶/取消置顶"
         >

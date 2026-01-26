@@ -7,30 +7,33 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 选中色：随主题变化 */
+/* 选中文字样式 */
 ::selection {
-  background: #e4e4e7;
-  color: black;
+  background: #99f6e4; /* primary-200 */
+  color: inherit;
 }
 
-.dark ::selection {
-  background: #3f3f46;
-  color: white;
+:root.dark ::selection {
+  background: #0f766e; /* primary-700 */
+  color: inherit;
 }
 
-/* 液体感交互 */
+/* 卡片交互 - 悬浮上移 */
 .liquid-card {
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.2s ease, background-color 0.3s;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-card:hover {
+  transform: translateY(-2px);
 }
 
 .liquid-card:active {
-  transform: scale(0.96);
+  transform: translateY(0);
 }
 
 /* 按钮触摸反馈 */
 .btn-press:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
 }
 
 /* 隐藏滚动条 */
@@ -51,10 +54,10 @@ body {
   overflow: hidden;
 }
 
-/* 瀑布流布局 */
+/* 瀑布流布局 - 增加间距 */
 .masonry-grid {
   column-count: 1;
-  column-gap: 1.5rem;
+  column-gap: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -77,5 +80,5 @@ body {
 
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
