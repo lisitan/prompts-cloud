@@ -131,9 +131,9 @@ export default function AppPage() {
       />
 
       {/* 主内容 */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+      <main className="flex-1 max-w-7xl mx-auto px-4 py-4 w-full">
         {/* 页面标题 */}
-        <div className="mb-8">
+        <div className="mb-6">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
             词匣子
           </h1>
