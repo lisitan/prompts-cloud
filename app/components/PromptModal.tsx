@@ -20,7 +20,7 @@ export function PromptModal({ isOpen, onClose, onSave, editingPrompt }: PromptMo
     if (editingPrompt) {
       setTitle(editingPrompt.title);
       setContent(editingPrompt.content);
-      setTagsInput(editingPrompt.tags.join(', '));
+      setTagsInput(editingPrompt.tags.join(' ')); // 用空格连接
     } else {
       setTitle('');
       setContent('');
@@ -35,7 +35,7 @@ export function PromptModal({ isOpen, onClose, onSave, editingPrompt }: PromptMo
     setSaving(true);
     try {
       const tags = tagsInput
-        .split(/[,，、]/)
+        .split(/\s+/) // 用空格分隔
         .map((t) => t.trim())
         .filter((t) => t.length > 0);
 
@@ -111,14 +111,14 @@ export function PromptModal({ isOpen, onClose, onSave, editingPrompt }: PromptMo
           {/* 标签 */}
           <div>
             <label htmlFor="tags" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-              标签（用逗号分隔）
+              标签（用空格分隔）
             </label>
             <input
               id="tags"
               type="text"
               value={tagsInput}
               onChange={(e) => setTagsInput(e.target.value)}
-              placeholder="例如：工作, 编程, AI"
+              placeholder="例如：工作 编程 AI"
               className="w-full px-4 py-3 rounded-[1rem] border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:focus:ring-zinc-600"
             />
           </div>
