@@ -3,8 +3,8 @@ import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "思潭的提示词集 | Liquid Air",
-  description: "云端多用户提示词管理工具",
+  title: "词匣子 - 收集整理你的AI提示词",
+  description: "简单优雅的云端多用户提示词管理工具",
 };
 
 export default function RootLayout({
