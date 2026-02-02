@@ -2,39 +2,49 @@
 
 > 收集整理你的AI提示词
 
-一个简单优雅的提示词管理工具，采用 Liquid Air 设计语言，支持本地和云端双模式。
+一个简单优雅的提示词管理工具，采用 Liquid Air 设计语言，支持云端同步与多端适配。
 
 ## ✨ 特性
 
 - 🎨 **Liquid Air 设计** - 圆润倒角，深邃黑色，自然交互
 - 🌓 **深色模式** - 自动适配系统主题偏好
 - 🏷️ **智能标签** - 右键置顶，频率排序，快速筛选
-- 📥 **双向导入导出** - 支持 Excel (.xlsx) 和 JSON 格式
-- 💾 **本地优先** - 单文件 HTML，离线可用，数据存储在本地
+- 📥 **双向导入导出** - 支持 Excel (.xlsx), JSON 以及 Markdown 提取
+- ☁️ **云端同步** - 基于 Supabase + Vercel KV，数据多端实时同步
 - 📱 **响应式布局** - 瀑布流设计，完美适配移动端
 - ⚡ **一键复制** - 点击卡片即可复制提示词内容
 
 ## 🚀 快速开始
 
-### 单文件版本（推荐）
-
-直接下载 `prompt-box.html` 在浏览器中打开即可使用：
+### 开发环境
 
 ```bash
 # 克隆仓库
 git clone https://github.com/lisitan/prompts.git
 
-# 打开文件
+# 进入目录
 cd prompts
-open prompt-box.html  # macOS
-start prompt-box.html # Windows
+
+# 安装依赖
+npm install
+
+# 配置环境变量 (参照 .env.local.example)
+cp .env.local.example .env.local
+
+# 启动开发服务器
+npm run dev
 ```
 
-无需安装任何依赖，数据保存在浏览器 localStorage 中。
+打开浏览器访问 `http://localhost:3000` 即可看到应用。
 
-### 云端版本（开发中）
+### 部署
 
-基于 Next.js + Supabase + Vercel KV 的多用户云端版本正在开发中，敬请期待。
+本项目专为 Vercel 部署优化：
+
+1. Fork 本仓库
+2. 在 Vercel 中导入项目
+3. 配置 Supabase 和 KV 环境变量
+4. 点击部署
 
 ## 📖 使用指南
 
@@ -98,31 +108,24 @@ python scripts/extract_prompts.py
 
 ## 🛠️ 技术栈
 
-### 单文件版本
-
-- **前端框架**：Vue 3 (CDN)
-- **样式系统**：Tailwind CSS (CDN)
-- **图标库**：Phosphor Icons
-- **Excel 处理**：SheetJS
-- **字体**：LXGW WenKai Screen（霞鹜文楷）
-
-### 云端版本（开发中）
-
 - **框架**：Next.js 14 + TypeScript
 - **数据库**：Supabase (PostgreSQL)
 - **缓存**：Vercel KV (Redis)
 - **认证**：Supabase Auth (GitHub OAuth)
-- **部署**：Vercel
+- **样式**：Tailwind CSS
+- **组件库**：Headless UI
+- **工具**：SheetJS (Excel 处理)
 
 ## 📁 项目结构
 
 ```
 prompts/
-├── prompt-box.html           # 单文件应用（生产可用）
-├── app/                      # Next.js 云端版本（开发中）
+├── app/                      # Next.js 应用源码
+├── scripts/                  # 实用脚本
+│   └── extract_prompts.py    # Markdown 提示词提取工具
 ├── CLAUDE.md                 # AI 助手项目文档
-├── IMPLEMENTATION_PLAN.md    # 云端版本实施计划
-└── PROGRESS.md               # 开发进度快照
+├── IMPLEMENTATION_PLAN.md    # 开发计划
+└── PROGRESS.md               # 开发进度
 ```
 
 ## 🤝 贡献
@@ -135,11 +138,11 @@ MIT License
 
 ## 🙏 致谢
 
-- [Vue.js](https://vuejs.org/) - 渐进式 JavaScript 框架
-- [Tailwind CSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
-- [Phosphor Icons](https://phosphoricons.com/) - 灵活的图标库
-- [SheetJS](https://sheetjs.com/) - 强大的电子表格工具
-- [LXGW WenKai](https://github.com/lxgw/LxgwWenKai) - 开源中文字体
+- [Next.js](https://nextjs.org/)
+- [Supabase](https://supabase.com/)
+- [Vercel](https://vercel.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
 
 ---
 
