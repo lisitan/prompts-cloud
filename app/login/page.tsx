@@ -127,8 +127,8 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 p-4">
-      {/* 隐私政策同意弹窗 */}
-      <PrivacyConsentModal onAccept={() => { }} />
+      {/* 隐私政策同意弹窗 - 仅在注册时显示 */}
+      {!isLogin && <PrivacyConsentModal onAccept={() => { }} />}
 
       <div className="max-w-6xl w-full flex flex-col lg:flex-row gap-8 items-center">
         {/* 左侧介绍区域 - 仅桌面端显示 */}
