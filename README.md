@@ -63,6 +63,14 @@ start prompt-box.html # Windows
 
 点击菜单 → 导入 Excel/JSON，支持：
 
+**Markdown 提取工具**：
+我们提供了一个 Python 脚本，可以将 Markdown 文件中的提示词提取为可导入的 JSON 格式：
+```bash
+# 运行提取脚本
+python scripts/extract_prompts.py
+```
+这会生成 `prompts_import.json` 文件，可以直接导入。
+
 **Excel 格式**：
 - 必需列：`标题/Title`、`内容/Content`
 - 可选列：`标签/Tags`（用逗号分隔）

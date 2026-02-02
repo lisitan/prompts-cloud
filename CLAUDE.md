@@ -46,6 +46,8 @@ app/
 ├── lib/                   # 工具库
 │   ├── kv.ts             # Vercel KV 数据层
 │   └── supabase-*.ts     # Supabase 客户端
+├── scripts/               # 实用脚本
+│   └── extract_prompts.py # Markdown 提示词提取工具
 └── layout.tsx            # 根布局
 ```
 
