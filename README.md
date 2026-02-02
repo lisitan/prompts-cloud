@@ -2,6 +2,8 @@
 
 > 收集整理你的AI提示词
 
+**在线体验**：[https://prompt.sitan.top/](https://prompt.sitan.top/)
+
 一个简单优雅的提示词管理工具，采用 Liquid Air 设计语言，支持云端同步与多端适配。
 
 ## ✨ 特性
