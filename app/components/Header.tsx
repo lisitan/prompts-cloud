@@ -72,7 +72,7 @@ export function Header({ userEmail, onNewPrompt, onImport, onExport }: HeaderPro
   return (
     <>
       <header className="border-b border-neutral-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           {/* Logo */}
           <Link href="/app" className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center shadow-sm">
