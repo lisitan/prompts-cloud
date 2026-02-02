@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { SearchBar } from '@/components/SearchBar';
@@ -9,15 +9,29 @@ import { PromptCard } from '@/components/PromptCard';
 import { PromptModal } from '@/components/PromptModal';
 import { usePrompts, Prompt } from '@/hooks/usePrompts';
 import { useTags } from '@/hooks/useTags';
+import { createClient } from '@/lib/supabase-client';
 
 export default function AppPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
+  const [userEmail, setUserEmail] = useState<string>('');
 
   const { prompts, isLoading, createPrompt, updatePrompt, deletePrompt } = usePrompts();
   const { tags, togglePin } = useTags();
+
+  // 获取用户信息
+  useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user?.email) {
+        setUserEmail(user.email);
+      }
+    };
+    fetchUser();
+  }, []);
 
   // 过滤提示词
   const filteredPrompts = useMemo(() => {
@@ -124,7 +138,7 @@ export default function AppPage() {
     <div className="min-h-screen bg-white dark:bg-neutral-900 flex flex-col">
       {/* 头部 */}
       <Header
-        userEmail="用户"
+        userEmail={userEmail || '用户'}
         onNewPrompt={handleNew}
         onImport={handleImport}
         onExport={handleExport}

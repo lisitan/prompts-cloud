@@ -4,125 +4,131 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-这是一个单文件的提示词管理工具应用,名为"思潭的提示词集 | Liquid Air"。整个应用打包在一个 HTML 文件中(`提示词助手.html`),可以直接在浏览器中打开使用,无需构建步骤。
+**词匣子** - 一个基于 Next.js 的提示词管理工具，支持云端同步、标签分类、导入导出等功能。
+
+**线上地址**: https://prompt.sitan.top
 
 ## 技术栈
 
-- **前端框架**: Vue 3 (通过 CDN: `unpkg.com/vue@3/dist/vue.global.js`)
-- **样式系统**: Tailwind CSS (通过 CDN: `cdn.tailwindcss.com`)
-- **图标库**: Phosphor Icons (`unpkg.com/@phosphor-icons/web`)
-- **Excel 处理**: SheetJS (`cdn.sheetjs.com/xlsx-0.19.3`)
-- **字体**: LXGW WenKai Screen (霞鹜文楷屏幕阅读版)
+- **框架**: Next.js 14 (App Router)
+- **语言**: TypeScript
+- **样式**: Tailwind CSS
+- **认证**: Supabase Auth
+- **数据库**: Vercel KV (Redis)
+- **状态管理**: React Query (TanStack Query)
+- **部署**: Vercel
 
-## 核心架构
+## 项目结构
 
-### 数据结构
+```
+app/
+├── api/                    # API 路由
+│   ├── prompts/           # 提示词 CRUD API
+│   ├── tags/              # 标签 API
+│   └── import/            # 数据导入 API
+├── app/                   # 主应用页面 (需登录)
+├── login/                 # 登录/注册页面
+├── forgot-password/       # 忘记密码页面
+├── reset-password/        # 重置密码页面
+├── settings/              # 账户设置页面
+├── privacy/               # 隐私政策页面
+├── components/            # React 组件
+│   ├── Header.tsx         # 顶部导航栏
+│   ├── PromptCard.tsx     # 提示词卡片
+│   ├── PromptModal.tsx    # 编辑弹窗
+│   ├── TagFilter.tsx      # 标签筛选器
+│   ├── SearchBar.tsx      # 搜索框
+│   ├── ConfirmModal.tsx   # 确认弹窗
+│   ├── Toast.tsx          # Toast 提示
+│   └── PrivacyConsentModal.tsx  # 隐私同意弹窗
+├── hooks/                 # 自定义 Hooks
+│   └── usePrompts.ts      # 提示词数据管理
+├── lib/                   # 工具库
+│   ├── kv.ts             # Vercel KV 数据层
+│   └── supabase-*.ts     # Supabase 客户端
+└── layout.tsx            # 根布局
+```
+
+## 数据结构
 
 **Prompt 对象**:
-```javascript
-{
-  id: Number,           // 唯一标识符 (timestamp)
-  title: String,        // 提示词标题
-  content: String,      // 提示词内容
-  tags: Array<String>,  // 标签数组
-  timestamp: Number     // 创建/更新时间戳
+```typescript
+interface Prompt {
+  id: string;           // UUID
+  userId: string;       // 用户 ID
+  title: string;        // 标题
+  content: string;      // 内容
+  tags: string[];       // 标签数组
+  createdAt: string;    // 创建时间
+  updatedAt: string;    // 更新时间
 }
 ```
 
-### 数据持久化
+## 环境变量
 
-- 使用 `localStorage` 存储数据
-- `liquidPrompts`: 存储所有提示词数据
-- `liquidPinnedTags`: 存储置顶标签列表
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-### 关键功能模块
+# Vercel KV
+KV_URL=your_kv_url
+KV_REST_API_URL=your_kv_rest_api_url
+KV_REST_API_TOKEN=your_kv_rest_api_token
+KV_REST_API_READ_ONLY_TOKEN=your_kv_read_only_token
+```
 
-1. **标签系统**
-   - 标签按使用频率和置顶状态排序
-   - 右键点击标签可置顶/取消置顶
-   - 点击标签即可筛选相关提示词
-
-2. **搜索功能**
-   - 支持搜索标题、内容和标签
-   - 实时过滤,无需按回车
-
-3. **导入/导出**
-   - 支持 Excel (.xlsx, .xls) 和 JSON 格式
-   - Excel 列映射: `标题/Title`, `内容/Content`, `标签/Tags`
-   - 导入时自动去重(基于标题)
-
-4. **主题切换**
-   - 支持亮色/暗色模式
-   - 自动适配系统偏好
-   - 状态保存在 `localStorage.theme`
-
-5. **瀑布流布局**
-   - 响应式列数: 移动端 1 列, 平板 2 列, 桌面 3 列, 超宽屏 4 列
-   - 使用 CSS `column-count` 实现
-
-## 开发指南
-
-### 文件结构
-
-整个应用是单文件架构:
-- HTML 结构 (第 66-197 行)
-- Vue 应用逻辑 (第 199-365 行)
-- 内联样式配置 (第 14-64 行, 第 367-370 行)
-
-### 修改常见元素
-
-**修改颜色方案**:
-- Tailwind 配置在第 15-36 行
-- 自定义 zinc 灰阶色板在第 22 行
-
-**修改响应式断点**:
-- 瀑布流列数配置在第 44-47 行
-
-**修改动画效果**:
-- 主要动画在第 28-33 行定义
-- 液体感交互效果在第 57-63 行
-
-### Vue 计算属性
-
-- `filteredPrompts`: 根据 `searchQuery` 过滤提示词
-- `sortedTags`: 按置顶状态和使用频率排序标签
-
-### 关键方法
-
-- `loadFromStorage()` / `saveToStorage()`: 数据持久化
-- `importJSON()` / `importExcel()`: 数据导入
-- `exportJSON()` / `exportXLSX()`: 数据导出
-- `mergeData()`: 导入时的数据合并逻辑(去重)
-- `copyToClipboard()`: 复制提示词内容
-
-## 测试和调试
-
-由于是纯前端应用,在浏览器中打开即可测试:
+## 开发命令
 
 ```bash
-# 在默认浏览器中打开
-start 提示词助手.html  # Windows
-open 提示词助手.html   # macOS
-xdg-open 提示词助手.html  # Linux
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 类型检查
+npx tsc --noEmit
+
+# 构建生产版本
+npm run build
+
+# 启动生产服务器
+npm start
 ```
 
-**检查 localStorage 数据**:
-```javascript
-// 在浏览器控制台执行
-JSON.parse(localStorage.getItem('liquidPrompts'))
-JSON.parse(localStorage.getItem('liquidPinnedTags'))
-```
+## 主要功能
+
+1. **用户认证**: 邮箱注册/登录、密码修改、忘记密码找回
+2. **提示词管理**: 创建、编辑、删除、复制
+3. **标签系统**: 标签筛选、置顶标签（右键点击）
+4. **搜索功能**: 实时搜索标题和内容
+5. **导入/导出**: 支持 JSON 和 Excel 格式
+6. **主题切换**: 亮色/暗色模式
+7. **账户设置**: 查看账户信息、修改密码、清除缓存
+
+## API 路由
+
+| 路由 | 方法 | 描述 |
+|------|------|------|
+| `/api/prompts` | GET | 获取用户所有提示词 |
+| `/api/prompts` | POST | 创建新提示词 |
+| `/api/prompts/[id]` | PUT | 更新提示词 |
+| `/api/prompts/[id]` | DELETE | 删除提示词 |
+| `/api/tags` | GET | 获取所有标签及使用频率 |
+| `/api/tags/pin` | POST | 切换标签置顶状态 |
+| `/api/import` | POST | 批量导入提示词 |
 
 ## 设计原则
 
-- **Liquid Air 设计语言**: 更圆润的倒角 (`rounded-[2rem]`), 更深的黑色, 更自然的交互
-- **触摸友好**: 所有交互元素有明显的按压反馈 (`.btn-press`, `.liquid-card`)
-- **无障碍**: 支持键盘导航,语义化 HTML 结构
-- **性能优化**: 使用 CSS transitions 而非 JavaScript 动画
+- **Liquid Air 设计语言**: 圆润倒角 (`rounded-2xl`)、毛玻璃效果、流畅动画
+- **响应式布局**: 移动端优先，适配各种屏幕尺寸
+- **深色模式**: 完整支持暗色主题
+- **无障碍**: 语义化 HTML、键盘导航支持
 
 ## 注意事项
 
-- 所有 CDN 资源需要网络连接才能加载
-- localStorage 有 5-10MB 容量限制
-- 导入 Excel 时会自动处理中英文列名映射
-- 标签分隔符支持: 逗号 `,`、中文逗号 `，`、顿号 `、`
+- 所有 API 路由需要 Supabase 认证
+- 数据按用户隔离存储在 Vercel KV
+- 忘记密码功能依赖 Supabase 邮件服务
+- 标签置顶状态保存在服务端
